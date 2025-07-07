@@ -19,7 +19,7 @@ export default function HomePage({
       <main className="p-4">
         <h1 className="text-2xl font-bold">{t("home.title")}</h1>
         <p>{t("home.content")}</p>
-        <p>Current language: {lang}</p> {/* Example usage */}
+        <p>Current language: {lang}</p>
       </main>
     </div>
   );
