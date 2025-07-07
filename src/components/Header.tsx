@@ -2,13 +2,20 @@
 
 import React, { useContext } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { LanguageContext } from "../context/LanguageContext";
 
 const Header: React.FC = () => {
   const { language, setLanguage } = useContext(LanguageContext);
   const pathname = usePathname();
+  const router = useRouter();
   const currentPath = pathname.split("/").slice(2).join("/") || "home";
+
+  const handleLanguageChange = (lang: "en" | "ro") => {
+    setLanguage(lang);
+    const newPath = `/${lang}/${currentPath}`;
+    router.push(newPath);
+  };
 
   return (
     <header className="p-4 bg-gray-800 text-white">
@@ -21,13 +28,13 @@ const Header: React.FC = () => {
         </div>
         <div>
           <button
-            onClick={() => setLanguage("en")}
+            onClick={() => handleLanguageChange("en")}
             className={`mr-2 ${language === "en" ? "font-bold" : ""}`}
           >
             EN
           </button>
           <button
-            onClick={() => setLanguage("ro")}
+            onClick={() => handleLanguageChange("ro")}
             className={language === "ro" ? "font-bold" : ""}
           >
             RO

@@ -1,39 +1,22 @@
 "use client";
 
 import { LanguageProvider } from "../../context/LanguageContext";
-import { ReactNode, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { ReactNode } from "react";
+import { use } from "react";
 
 export default function LanguageLayout({
   children,
   params,
 }: {
   children: ReactNode;
-  params: { lang: "en" | "ro" };
+  params: Promise<{ lang: "en" | "ro" }>;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("language") as
-      | "en"
-      | "ro"
-      | null;
-    if (savedLanguage && savedLanguage !== params.lang) {
-      const newPath = pathname.replace(
-        `/${params.lang}/`,
-        `/${savedLanguage}/`
-      );
-      router.replace(newPath);
-    }
-  }, [params.lang, pathname, router]);
+  const { lang } = use(params);
 
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <body>
-        <LanguageProvider initialLanguage={params.lang}>
-          {children}
-        </LanguageProvider>
+        <LanguageProvider initialLanguage={lang}>{children}</LanguageProvider>
       </body>
     </html>
   );
