@@ -1,0 +1,10 @@
+{
+  "home": {
+    "title": "Bun venit pe pagina principală",
+    "content": "Acesta este conținutul paginii principale."
+  },
+  "about": {
+    "title": "Despre noi",
+    "content": "Află mai multe despre compania noastră."
+  }
+}
