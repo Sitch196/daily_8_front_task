@@ -1,4 +1,4 @@
-# Daily8 Frontend
+# Daily8 Frontend Task
 
 > This is the frontend for the Daily8 project, built with [Next.js](https://nextjs.org) and TypeScript.
 
