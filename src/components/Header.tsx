@@ -21,7 +21,7 @@ const Header: React.FC = () => {
     <header className="p-4 bg-gray-800 text-white">
       <nav className="flex justify-between">
         <div>
-          <Link href={`/${language}/home`} className="mr-4">
+          <Link href={`/${language}/home`} className="mr-4  ">
             Home
           </Link>
           <Link href={`/${language}/about`}>About</Link>
@@ -29,13 +29,17 @@ const Header: React.FC = () => {
         <div>
           <button
             onClick={() => handleLanguageChange("en")}
-            className={`mr-2 ${language === "en" ? "font-bold" : ""}`}
+            className={`cursor-pointer mr-2 ${
+              language === "en" ? "font-bold" : ""
+            }`}
           >
             EN
           </button>
           <button
             onClick={() => handleLanguageChange("ro")}
-            className={language === "ro" ? "font-bold" : ""}
+            className={`cursor-pointer mr-2 ${
+              language === "ro" ? "font-bold" : ""
+            }`}
           >
             RO
           </button>
